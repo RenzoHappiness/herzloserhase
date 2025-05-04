@@ -1,0 +1,76 @@
+/* style.css - Dieser Code bleibt gleich */
+
+/* Grundlegendes Styling für Layout und Controls */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+.container {
+    display: flex;
+    gap: 30px; /* Abstand zwischen SVG und Controls */
+    flex-wrap: wrap; /* Ermöglicht Umbruch auf kleineren Bildschirmen */
+    padding: 20px; /* Abstand vom Rand */
+    justify-content: center; /* Zentriert Inhalt bei Umbruch */
+}
+.svg-display {
+    flex: 2; /* Nimmt mehr Platz ein */
+    min-width: 300px; /* Mindestbreite, damit es nicht zu schmal wird */
+    max-width: 600px; /* Max Breite */
+    height: auto; /* Höhe basierend auf Inhalt */
+    border: 1px solid #ccc; /* Optionaler Rahmen */
+    box-sizing: border-box;
+    background-color: white; /* Hintergrund für den SVG-Bereich */
+    display: flex; /* Flexbox für Zentrierung des Object-Tags */
+    justify-content: center; /* Zentriert horizontal */
+    align-items: center; /* Zentriert vertikal */
+    padding: 10px;
+}
+
+/* Das Object-Tag selbst für die Größe anpassen */
+.svg-display object {
+    display: block; /* Entfernt zusätzlichen Leerraum */
+    width: 100%; /* Nimmt gesamte Breite des Containers ein */
+    height: auto; /* Höhe proportional zur Breite */
+    max-height: 100%; /* Nicht höher als der Container */
+}
+
+.controls {
+    flex: 1; /* Nimmt weniger Platz ein */
+    min-width: 280px; /* Mindestbreite für Controls */
+    max-width: 400px; /* Max Breite für Controls */
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.layer-control {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.layer-control h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1em;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+    color: #333;
+}
+.color-slider {
+    width: calc(100% - 40px); /* Slider breite - Label breite */
+    margin-bottom: 5px;
+    vertical-align: middle;
+}
+label {
+    display: inline-block;
+    width: 30px; /* Für einheitliche Ausrichtung der Slider */
+    font-weight: bold;
+    margin-right: 5px;
+    vertical-align: middle;
+}

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hase Farben Anpassen</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .controls-left,
+        .controls-right {
+             flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            box-sizing: border-box;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+
+        .svg-display {
+            flex: 2;
+            min-width: 300px;
+            max-width: 600px;
+            height: auto;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            flex-shrink: 0;
+        }
+
+        .svg-display object {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+
+
+        .layer-control {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .layer-control h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-size: 1em;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+            color: #333;
+        }
+        .slider-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .slider-row label {
+            flex-shrink: 0;
+            margin-right: 5px;
+            width: 20px;
+        }
+
+        .slider-row input[type="range"] {
+             flex-grow: 1;
+             margin-right: 5px; 
+             width: auto;
+        }
+
+
+        .color-info {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+         .color-info input[type="color"] {
+             margin-right: 10px;
+             padding: 0;
+             border: none;
+             background: none;
+             width: 40px;
+             height: 40px;
+             cursor: pointer;
+         }
+         .color-info .rgb-value {
+             font-family: monospace;
+         }
+
+         .button-container {
+             margin-top: 20px;
+             display: flex;
+             justify-content: center;
+             gap: 20px;
+         }
+         .button-container button {
+             padding: 10px 15px;
+             font-size: 1em;
+             cursor: pointer;
+             border: none;
+             border-radius: 5px;
+             background-color: #007bff;
+             color: white;
+             transition: background-color 0.2s ease;
+         }
+          .button-container button:hover {
+              background-color: #0056b3;
+          }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="controls-left">
+
+            <div class="layer-control">
+                <h3>Hintergrund</h3>
+                <div class="slider-row">
+                    <label for="slider-ID_28-r-left">R:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_28-r-left" data-layer="ID_28" data-color="r">
+                </div>
+                <div class="slider-row">
+                    <label for="slider-ID_28-g-left">G:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_28-g-left" data-layer="ID_28" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_28-b-left">B:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_28-b-left" data-layer="ID_28" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_28-left" data-layer="ID_28" value="#ffffff">
+                     <span class="rgb-value" id="rgb-ID_28-left">rgb(255, 255, 255)</span>
+                 </div>
+            </div>
+
+            <div class="layer-control">
+                <h3>Outline</h3>
+                <div class="slider-row">
+                    <label for="slider-ID_30-r-left">R:</label> <input type="range" min="0" max="255" value="0" class="color-slider" id="slider-ID_30-r-left" data-layer="ID_30" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_30-g-left">G:</label> <input type="range" min="0" max="255" value="0" class="color-slider" id="slider-ID_30-g-left" data-layer="ID_30" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_30-b-left">B:</label> <input type="range" min="0" max="255" value="0" class="color-slider" id="slider-ID_30-b-left" data-layer="ID_30" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_30-left" data-layer="ID_30" value="#000000">
+                     <span class="rgb-value" id="rgb-ID_30-left">rgb(0, 0, 0)</span>
+                 </div>
+            </div>
+
+             <div class="layer-control">
+                <h3>Linkes Ohr</h3>
+                <div class="slider-row">
+                    <label for="slider-ID_32-r-left">R:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_32-r-left" data-layer="ID_32" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_32-g-left">G:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_32-g-left" data-layer="ID_32" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_32-b-left">B:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_32-b-left" data-layer="ID_32" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_32-left" data-layer="ID_32" value="#ffffff">
+                     <span class="rgb-value" id="rgb-ID_32-left">rgb(255, 255, 255)</span>
+                 </div>
+            </div>
+
+            <div class="layer-control">
+                <h3>Schild Links</h3>
+                 <div class="slider-row">
+                    <label for="slider-ID_34-r-left">R:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_34-r-left" data-layer="ID_34" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_34-g-left">G:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_34-g-left" data-layer="ID_34" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_34-b-left">B:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_34-b-left" data-layer="ID_34" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_34-left" data-layer="ID_34" value="#ffffff">
+                     <span class="rgb-value" id="rgb-ID_34-left">rgb(255, 255, 255)</span>
+                 </div>
+            </div>
+
+             <div class="layer-control">
+                <h3>Auge</h3>
+                 <div class="slider-row">
+                    <label for="slider-ID_39-r-left">R:</label> <input type="range" min="0" max="255" value="0" class="color-slider" id="slider-ID_39-r-left" data-layer="ID_39" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_39-g-left">G:</label> <input type="range" min="0" max="255" value="0" class="color-slider" id="slider-ID_39-g-left" data-layer="ID_39" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_39-b-left">B:</label> <input type="range" min="0" max="255" value="0" class="color-slider" id="slider-ID_39-b-left" data-layer="ID_39" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_39-left" data-layer="ID_39" value="#000000">
+                     <span class="rgb-value" id="rgb-ID_39-left">rgb(0, 0, 0)</span>
+                 </div>
+            </div>
+
+        </div>
+
+        <div class="svg-display">
+            <object data="Hase.svg" type="image/svg+xml" id="svgObject"></object>
+        </div>
+
+
+        <div class="controls-right">
+             <div class="layer-control">
+                <h3>Rechtes Ohr</h3>
+                 <div class="slider-row">
+                    <label for="slider-ID_31-r-right">R:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_31-r-right" data-layer="ID_31" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_31-g-right">G:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_31-g-right" data-layer="ID_31" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_31-b-right">B:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_31-b-right" data-layer="ID_31" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_31-right" data-layer="ID_31" value="#ffffff">
+                     <span class="rgb-value" id="rgb-ID_31-right">rgb(255, 255, 255)</span>
+                 </div>
+            </div>
+
+             <div class="layer-control">
+                <h3>Schild Rechts</h3>
+                 <div class="slider-row">
+                    <label for="slider-ID_33-r-right">R:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_33-r-right" data-layer="ID_33" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_33-g-right">G:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_33-g-right" data-layer="ID_33" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_33-b-right">B:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_33-b-right" data-layer="ID_33" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_33-right" data-layer="ID_33" value="#ffffff">
+                     <span class="rgb-value" id="rgb-ID_33-right">rgb(255, 255, 255)</span>
+                 </div>
+            </div>
+
+             <div class="layer-control">
+                <h3>Körper</h3>
+                 <div class="slider-row">
+                    <label for="slider-ID_36-r-right">R:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_36-r-right" data-layer="ID_36" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_36-g-right">G:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_36-g-right" data-layer="ID_36" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_36-b-right">B:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_36-b-right" data-layer="ID_36" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_36-right" data-layer="ID_36" value="#ffffff">
+                     <span class="rgb-value" id="rgb-ID_36-right">rgb(255, 255, 255)</span>
+                 </div>
+            </div>
+
+             <div class="layer-control">
+                <h3>Herz</h3>
+                 <div class="slider-row">
+                    <label for="slider-ID_45-r-right">R:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_45-r-right" data-layer="ID_45" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_45-g-right">G:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_45-g-right" data-layer="ID_45" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_45-b-right">B:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_45-b-right" data-layer="ID_45" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_45-right" data-layer="ID_45" value="#ffffff">
+                     <span class="rgb-value" id="rgb-ID_45-right">rgb(255, 255, 255)</span>
+                 </div>
+            </div>
+
+             <div class="layer-control">
+                <h3>Pummelschwanz</h3>
+                 <div class="slider-row">
+                    <label for="slider-ID_48-r-right">R:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_48-r-right" data-layer="ID_48" data-color="r">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_48-g-right">G:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_48-g-right" data-layer="ID_48" data-color="g">
+                </div>
+                 <div class="slider-row">
+                    <label for="slider-ID_48-b-right">B:</label> <input type="range" min="0" max="255" value="255" class="color-slider" id="slider-ID_48-b-right" data-layer="ID_48" data-color="b">
+                </div>
+                 <div class="color-info">
+                     <input type="color" id="color-ID_48-right" data-layer="ID_48" value="#ffffff">
+                     <span class="rgb-value" id="rgb-ID_48-right">rgb(255, 255, 255)</span>
+                 </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="button-container">
+        <button id="downloadButton">Download</button>
+        <button id="randomizeButton">Party hart (spamm mich) </button>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
