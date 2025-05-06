@@ -1,5 +1,3 @@
-/* style.css - Dieser Code bleibt gleich */
-
 /* Grundlegendes Styling für Layout und Controls */
 body {
     font-family: sans-serif;
@@ -15,62 +13,172 @@ body {
     padding: 20px; /* Abstand vom Rand */
     justify-content: center; /* Zentriert Inhalt bei Umbruch */
 }
+
+/* Styling für die linken und rechten Kontrollbereiche */
+.controls-left,
+.controls-right {
+     flex: 1; /* Nimmt verfügbaren Platz ein */
+    min-width: 280px; /* Mindestbreite */
+    max-width: 350px; /* Maximale Breite */
+    box-sizing: border-box; /* Padding und Border werden in die Breite einberechnet */
+    background-color: #fff; /* Weißer Hintergrund */
+    padding: 20px; /* Innenabstand */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Leichter Schatten */
+    max-height: 80vh; /* Maximale Höhe (80% der Viewporthöhe) */
+    overflow-y: auto; /* Scrollbar, wenn Inhalt die max-height überschreitet */
+}
+
+/* Styling für den SVG-Anzeigebereich */
 .svg-display {
-    flex: 2; /* Nimmt mehr Platz ein */
-    min-width: 300px; /* Mindestbreite, damit es nicht zu schmal wird */
-    max-width: 600px; /* Max Breite */
-    height: auto; /* Höhe basierend auf Inhalt */
+    flex: 2; /* Nimmt doppelt so viel Platz ein wie die Kontrollen */
+    min-width: 300px; /* Mindestbreite */
+    max-width: 600px; /* Maximale Breite */
+    height: auto; /* Höhe passt sich dem Inhalt an */
     border: 1px solid #ccc; /* Optionaler Rahmen */
     box-sizing: border-box;
     background-color: white; /* Hintergrund für den SVG-Bereich */
     display: flex; /* Flexbox für Zentrierung des Object-Tags */
     justify-content: center; /* Zentriert horizontal */
     align-items: center; /* Zentriert vertikal */
-    padding: 10px;
+    padding: 10px; /* Innenabstand */
+    flex-shrink: 0; /* Verhindert, dass der SVG-Bereich schrumpft */
 }
 
 /* Das Object-Tag selbst für die Größe anpassen */
 .svg-display object {
-    display: block; /* Entfernt zusätzlichen Leerraum */
+    display: block; /* Entfernt zusätzlichen Leerraum unter dem Element */
     width: 100%; /* Nimmt gesamte Breite des Containers ein */
     height: auto; /* Höhe proportional zur Breite */
     max-height: 100%; /* Nicht höher als der Container */
 }
 
-.controls {
-    flex: 1; /* Nimmt weniger Platz ein */
-    min-width: 280px; /* Mindestbreite für Controls */
-    max-width: 400px; /* Max Breite für Controls */
-    box-sizing: border-box;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+/* Styling für einzelne Layer-Kontrollbereiche */
 .layer-control {
-    margin-bottom: 20px;
-    padding: 15px;
-    border: 1px solid #eee;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    margin-bottom: 20px; /* Abstand zum nächsten Layer-Control */
+    padding: 15px; /* Innenabstand */
+    border: 1px solid #eee; /* Leichter Rahmen */
+    border-radius: 5px; /* Abgerundete Ecken */
+    background-color: #f9f9f9; /* Hintergrundfarbe */
 }
 .layer-control h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 1em;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 5px;
-    color: #333;
+    margin-top: 0; /* Kein oberer Margin */
+    margin-bottom: 10px; /* Abstand zum Inhalt darunter */
+    font-size: 1em; /* Schriftgröße */
+    border-bottom: 1px solid #ddd; /* Trennlinie */
+    padding-bottom: 5px; /* Abstand zwischen Text und Linie */
+    color: #333; /* Schriftfarbe */
 }
-.color-slider {
-    width: calc(100% - 40px); /* Slider breite - Label breite */
-    margin-bottom: 5px;
-    vertical-align: middle;
+/* Styling für eine Slider-Zeile (Label + Slider) */
+.slider-row {
+    display: flex; /* Elemente in einer Reihe */
+    align-items: center; /* Vertikal zentrieren */
+    margin-bottom: 5px; /* Abstand zur nächsten Slider-Zeile */
 }
-label {
-    display: inline-block;
-    width: 30px; /* Für einheitliche Ausrichtung der Slider */
-    font-weight: bold;
-    margin-right: 5px;
-    vertical-align: middle;
+
+.slider-row label {
+    flex-shrink: 0; /* Label schrumpft nicht */
+    margin-right: 5px; /* Abstand zwischen Label und Slider */
+    width: 20px; /* Feste Breite für Labels für Ausrichtung */
+    font-weight: bold; /* Schrift fett */
 }
+
+.slider-row input[type="range"] {
+     flex-grow: 1; /* Slider nimmt den restlichen Platz ein */
+     margin-right: 5px;
+     width: auto; /* Breite automatisch (durch flex-grow) */
+}
+
+/* Styling für den Bereich Farbanzeige und -Eingabe */
+.color-info {
+    display: flex; /* WICHTIG: Colorpicker und Color Values stehen nebeneinander */
+    align-items: center; /* Vertikal zentrieren */
+    margin-top: 10px; /* Abstand zu den Slidern darüber */
+    /* flex-wrap: wrap; <-- Optional, falls bei sehr kleinen Bildschirmen ein Umbruch gewünscht ist */
+}
+ /* Styling für den Colorpicker */
+ .color-info input[type="color"] {
+     margin-right: 15px; /* Abstand zum Block rechts daneben */
+     padding: 0;
+     border: none;
+     background: none;
+     width: 40px;
+     height: 40px;
+     cursor: pointer;
+     flex-shrink: 0; /* Verhindert, dass der Colorpicker schrumpft */
+ }
+ /* Container für RGB- und Hex-Input Zeilen (steht neben dem Colorpicker) */
+ .color-info .color-values {
+     display: flex;
+     flex-direction: column; /* RGB-Zeile und Hex-Zeile untereinander */
+     gap: 5px; /* Abstand zwischen den Zeilen */
+     flex-grow: 1; /* Nimmt den verbleibenden Platz in der .color-info Zeile ein */
+     max-width: 75%; /* Stellt sicher, dass dieser Block nicht überläuft */
+ }
+
+ /* Styling für eine einzelne Zeile mit Label und Input (RGB: / HEX: + Input) */
+ .color-info .color-input-row {
+     display: flex; /* Label und Input nebeneinander */
+     align-items: center; /* Vertikal zentrieren */
+     gap: 5px; /* Abstand zwischen Label und Input */
+ }
+
+ /* Styling für die Labels der Farb-Inputs (RGB: / HEX:) */
+ .color-info .color-input-row label {
+     font-weight: bold;
+     flex-shrink: 0;
+     width: 35px; /* Feste Breite für Labels zur Ausrichtung */
+     text-align: right; /* Text rechtsbündig */
+ }
+
+ /* Styling für RGB- und Hex-Textfelder */
+ .color-info input[type="text"] {
+    font-family: monospace; /* Monospace-Schriftart für Code */
+    padding: 5px; /* Innenabstand */
+    border: 1px solid #ccc; /* Rahmen */
+    border-radius: 4px; /* Abgerundete Ecken */
+    flex-grow: 1; /* Input-Feld nimmt restlichen Platz in der Zeile ein */
+    box-sizing: border-box; /* Stellt sicher, dass Padding und Border in der Breite enthalten sind */
+    min-width: 80px; /* Mindestbreite, damit es nicht zu schmal wird */
+    /* Optional: Textumbruch bei Überlauf aktivieren */
+    /* overflow-wrap: break-word; */
+    /* word-break: break-all; */
+ }
+
+ /* Styling für Checkbox-Optionen */
+ .layer-control .control-option {
+     margin-bottom: 15px; /* Abstand nach unten */
+     display: flex; /* Checkbox und Label nebeneinander */
+     align-items: center; /* Vertikal zentrieren */
+     gap: 5px; /* Abstand zwischen Checkbox und Label */
+ }
+ .control-option input[type="checkbox"] {
+     flex-shrink: 0; /* Checkbox schrumpft nicht */
+ }
+ .control-option label {
+     font-weight: normal; /* Label Text nicht fett */
+     /* width: auto; /* Breite automatisch */
+ }
+
+
+ /* Styling für Button-Container */
+ .button-container {
+     margin-top: 20px; /* Abstand nach oben */
+     margin-bottom: 20px; /* Abstand nach unten */
+     display: flex; /* Buttons in einer Reihe */
+     justify-content: center; /* Buttons horizontal zentrieren */
+     gap: 20px; /* Abstand zwischen den Buttons */
+ }
+ .button-container button {
+     padding: 10px 15px; /* Innenabstand */
+     font-size: 1em; /* Schriftgröße */
+     cursor: pointer; /* Cursor ändert sich */
+     border: none; /* Kein Rahmen */
+     border-radius: 5px; /* Abgerundete Ecken */
+     background-color: #007bff; /* Hintergrundfarbe (Blau) */
+     color: white; /* Schriftfarbe */
+     transition: background-color 0.2s ease; /* Sanfter Übergang bei Hover */
+ }
+  .button-container button:hover {
+      background-color: #0056b3; /* Dunkleres Blau bei Hover */
+  }
